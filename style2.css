@@ -1,0 +1,306 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('assets/gunung.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: black;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    transition: background 0.3s, color 0.3s; /* Smooth transition for dark/light mode */
+}
+
+body.dark-mode {
+    background: url('assets/nighttime.jpg') no-repeat center center fixed; /* Menampilkan gambar di tengah dan tidak bergerak */
+    background-size: cover; /* Gambar mengisi seluruh layar tanpa terdistorsi */
+    color: rgb(212, 212, 212);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    transition: background 0.3s, color 0.3s; /* Smooth transition for dark/light mode */
+}
+
+
+body.dark-mode .container {
+    background: rgba(50, 50, 50, 0.9); /* Dark container background */
+}
+
+body.dark-mode .city-input {
+    background: rgba(255, 255, 255, 0.1);
+    color: #f1f1f1;
+}
+
+body.dark-mode .city-input::placeholder {
+    color: #cccccc;
+}
+
+body.dark-mode .search-btn {
+    color: #80d4ff;
+}
+
+body.dark-mode .search-btn:hover {
+    color: #66c2ff;
+}
+
+/* Container Styles */
+.container {
+    border: solid rgb(0,0,0,0.2);
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    overflow-y: auto; /* Membiarkan konten bawah bisa scroll jika diperlukan */
+    overflow: hidden;
+    height: 90vh; /* Agar kontainer memiliki ketinggian 90% dari layar */
+}
+
+/* Heading */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Input Field Styles */
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Input berada di tengah */
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+    gap: 10px; /* Jarak antara elemen di dalam container */
+}
+
+/* Dark/Light Mode Toggle */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    position: absolute; /* Agar slider bisa diatur secara independen */
+    left: 10px; /* Slider berada di kiri container */
+    top: 25px;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* City input field */
+.input-wrapper {
+    position: relative; /* Membuat elemen anaknya bisa diatur dengan absolute */
+    width: 60%; /* Lebar penuh untuk wrapper */
+}
+
+.city-input {
+    width: 100%;
+    max-width: 400px; /* Membatasi lebar input */
+    padding: 12px 40px 12px 16px;
+    border-radius: 50px;
+    border: 3px solid #00aaff;
+    background: rgba(0, 0, 0, 0.2);
+    color: black;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.3s ease-in-out;
+}
+
+.city-input:focus {
+    border-color: #00bfff;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.city-input::placeholder {
+    color: black;
+}
+
+/* Search Button */
+.search-btn {
+    position: absolute;
+    top: 50%; /* Memposisikan tombol di tengah vertikal */
+    right: 10px; /* Jarak tombol dari tepi kanan */
+    transform: translateY(-50%); /* Menyelaraskan ke tengah secara sempurna */
+    border: none; /* Menghapus border tombol */
+    background: none; /* Transparan */
+    cursor: pointer; /* Menambahkan ikon pointer */
+    padding: 0;
+    font-size: 20px; /* Ukuran ikon */
+    color: #888; /* Warna ikon */
+}
+
+.search-btn:hover {
+    color: #0088cc;
+}
+
+/* Weather Info */
+.weather-info p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Image and Icon Styling */
+#weatherIcon {
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Circular icon */
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+/* Chart Styles */
+#weatherChart {
+    width: 100%;
+    max-height: 300px;
+    margin-top: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        width: 300px;
+        height: auto;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .city-input {
+        font-size: 0.9rem;
+    }
+
+    .search-btn {
+        font-size: 1.2rem;
+    }
+
+    .switch {
+        left: 5px; /* Adjust posisi slider pada layar kecil */
+    }
+}
+
+.fa {
+    vertical-align: middle;
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.details-box {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;   
+    align-items: center;
+    padding: 20px;
+}
+
+.details-box2 {
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;   
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.regular-txt {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+
+#humidity, #temperature, #windSpeed, #pressure{
+    font-family: 'Tahoma', sans-serif;
+    font-size: 18px;
+}
+
+.details-box3 {
+    margin-top: 10px;
+}
+
+#description {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 20px;
+}
+
+.condition-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.theme-txt {
+    position: absolute;
+    left: 8px;
+    top: 2px;
+    font: 24px;
+}
+
+
+.search-city {
+    align-items: center;
+    padding-top: 50px;
+}
+
+.search-img {
+    padding-top: 20px;
+    height: 300px;
+    width: 300px;
+    align-items: center;
+    border-radius: 20px;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Website</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="input-container">
+            <div class="theme-toggle">
+                <h5 class="theme-txt">Theme</h5>
+                <label class="switch">
+                    <input type="checkbox" id="themeSwitch">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="input-wrapper">
+                <input class="city-input" id="cityInput" placeholder="Search City">
+                <button class="search-btn" id="searchBtn">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Weather Information Section -->
+        <div id="weatherResult" class="weather-info-container" style="display :none;">
+            <div class="info-box">
+                <h2 id="cityName"></h2>
+                <img id="weatherIcon" src="" alt="Weather Icon">
+            </div>
+
+            <div class="details-box3">
+                <h2>Status</h2>
+                <span id="description"></span>
+            </div>
+
+            <div class="details-box">
+                <div class="condition-item">
+                    <span class="material-icons" style="font-size: 45px;">
+                        thermostat
+                    </span>
+                    <div class="temperature-info">  
+                        <h3 class="regular-txt">Temperature</h3>
+                        <span id="temperature"></span>
+                    </div>
+                    
+                </div>
+
+                <div class="condition-item">
+                    <span class="material-icons" style="font-size: 45px;">
+                        water_drop
+                    </span>  
+                    <div class="humidity-info"> 
+                        <h3 class="regular-txt">Humidity</h3>
+                        <span id="humidity"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-box2">
+                <div class="condition-item">
+                    <span class="material-icons" style="font-size: 45px;">
+                        air
+                    </span>
+                    <div class="windSpeed-info">  
+                        <h3 class="regular-txt">Wind Speed</h3>
+                        <span id="windSpeed"></span>
+                    </div>    
+                </div>
+
+                <div class="condition-item">
+                    <span class="material-icons" style="font-size: 45px;">
+                        speed
+                    </span>
+                    <div class="pressure-info">  
+                        <h3 class="regular-txt">Pressure</h3>
+                        <span id="pressure"></span>
+                    </div>    
+                </div>
+            </div>
+        </div>
+
+        <div id="searchCity" class="search-city">
+            <div class="search-city-text">
+                <h1>Search City</h1>
+                <h2 class="regular-txt"> Find out the weather condition of the city</h2>
+            </div>
+            <img src="Assets/Loading.webp" class="search-img" id="loadingImage">
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-container">
+            <canvas id="weatherChart"></canvas>
+        </div>
+    </div>
+    <script src="script2.js"></script>
+</body>
+</html>
